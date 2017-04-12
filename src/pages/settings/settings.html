@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="controls">
+    <button ion-button color="primary" on-tap="startScan()">Start Scanning</button>
+  </div>
+  <div class="controls">
+    <button ion-button color="danger" on-tap="stopScan()">Stop Scanning</button>
+  </div>
+  <ion-list inset>
+    <ion-item-sliding *ngFor="let device of devices" #slidingItem>
+      <button ion-item (click)="connectToDevice(device)">
+        <h2>{{device.name}}</h2>
+        <p>{{device.id}}</p>
+        <p>{{device.rssi}}</p>
+      </button>
+
+    </ion-item-sliding>
+  </ion-list>
+  <ion-spinner *ngIf="isScanning" name="circles" align-self-center></ion-spinner>
+</ion-content>
