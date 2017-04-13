@@ -15,8 +15,9 @@
     <ion-item-sliding *ngFor="let device of devices" #slidingItem>
       <button ion-item (click)="connectToDevice(device)">
         <h2>{{device.name}}</h2>
+        <p>RSSI: {{device.rssi}}</p>
+        <h3>UUID</h3>
         <p>{{device.id}}</p>
-        <p>{{device.rssi}}</p>
       </button>
 
     </ion-item-sliding>

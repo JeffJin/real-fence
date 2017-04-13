@@ -1,6 +1,7 @@
 import {Component, NgZone} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {BLE} from "@ionic-native/ble";
+import {Dialogs} from "@ionic-native/dialogs";
 
 @Component({
   selector: 'page-settings',
@@ -10,7 +11,7 @@ export class SettingsPage {
   devices:Array<any> = [];
   isScanning:boolean = false;
 
-  constructor(private zone: NgZone, private ble: BLE) {
+  constructor(private zone: NgZone, private ble: BLE, private dialogs: Dialogs) {
 
   }
 
@@ -20,15 +21,16 @@ export class SettingsPage {
     this.isScanning = true;
     this.ble.startScan([]).subscribe(
       device => {
-        console.log('new device discovered', device);
-
+        console.log('new device discovered', JSON.stringify(device));
         if(!this.deviceExists(device.id)){
-          console.log('adding new device into queue', device);
-          if(device.name){
+          if(device.name && device.name.indexOf('MacBook') < 0){
             this.zone.run(()=>{
               this.devices.push(device);
             });
           }
+        }
+        else{
+          console.warn('device exists', JSON.stringify(device));
         }
       },
       err => {
@@ -62,11 +64,9 @@ export class SettingsPage {
   }
 
   connectToDevice(device) {
-    console.log('Connect To BLE Device');
-    console.log(JSON.stringify(device))
-    // this.navCtrl.push(DevicePage, {
-    //   device: device
-    // });
+    this.dialogs.alert(JSON.stringify(device, null, 2), device.name)
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
   }
 
 }

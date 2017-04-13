@@ -12,6 +12,7 @@ import {ListingPage} from "../pages/listing/listing";
 import {SettingsPage} from "../pages/settings/settings";
 import {IBeacon} from "@ionic-native/ibeacon";
 import {BLE} from "@ionic-native/ble";
+import {Dialogs} from "@ionic-native/dialogs";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {BLE} from "@ionic-native/ble";
     SplashScreen,
     IBeacon,
     BLE,
+    Dialogs,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

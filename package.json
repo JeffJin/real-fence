@@ -21,6 +21,7 @@
     "@ionic-native/ble": "^3.4.4",
     "@ionic-native/bluetooth-serial": "^3.4.4",
     "@ionic-native/core": "3.4.2",
+    "@ionic-native/dialogs": "^3.4.4",
     "@ionic-native/geolocation": "^3.4.4",
     "@ionic-native/google-maps": "^3.4.4",
     "@ionic-native/ibeacon": "^3.4.4",

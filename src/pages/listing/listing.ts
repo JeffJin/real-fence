@@ -35,7 +35,7 @@ export class ListingPage {
         }
       );
 
-    let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon','F7826DA6-ASDF-ASDF-8024-BC5B71E0893E');
+    let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon','413C76DD-C125-4FCE-A31B-62D5E5C29FFE');
 
     this.ibeacon.startMonitoringForRegion(beaconRegion)
       .then(
