@@ -37,7 +37,7 @@
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-googlemaps" spec="~1.4.0">
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyCi5VRYFGs00qjXvoM8ZRB4mPwtSjANaKM" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyAQV0jspT4qwfwaURmowUyHY6YCrrqmcEQ" />
     </plugin>
     <plugin name="cordova-plugin-ble-central" spec="~1.1.4">
         <variable name="BLUETOOTH_USAGE_DESCRIPTION" value=" " />

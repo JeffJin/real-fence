@@ -13,6 +13,7 @@ import {SettingsPage} from "../pages/settings/settings";
 import {IBeacon} from "@ionic-native/ibeacon";
 import {BLE} from "@ionic-native/ble";
 import {Dialogs} from "@ionic-native/dialogs";
+import {GoogleMaps} from "@ionic-native/google-maps";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {Dialogs} from "@ionic-native/dialogs";
     IBeacon,
     BLE,
     Dialogs,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
