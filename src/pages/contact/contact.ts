@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {
-  GoogleMaps, CameraPosition, LatLng, MarkerOptions, Marker, GoogleMap,
-  GoogleMapsEvent
+import { NavController, Platform} from 'ionic-angular';
+import { GoogleMaps, CameraPosition, LatLng, MarkerOptions, Marker,
+  GoogleMap, GoogleMapsEvent
 } from "@ionic-native/google-maps";
 
 @Component({
@@ -11,12 +10,27 @@ import {
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps) {
-
+  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, private platform: Platform) {
   }
-// Load map only after view is initialized
+
+  // Load map only after view is initialized
   ngAfterViewInit() {
-    this.loadMap();
+    this.platform.ready().then(() => this.onPlatformReady());
+  }
+
+  onPlatformReady(): void{
+    this.googleMaps.isAvailable().then((result) => {
+      console.log('Google Map is available')
+
+      if(result){
+        setTimeout(() => {
+          this.loadMap();
+        }, 2000);
+      }
+      else{
+        console.error('googleMaps.isAvailable', result);
+      }
+    });
   }
 
   loadMap() {
@@ -27,9 +41,11 @@ export class ContactPage {
     // </ion-content>
 
     // create a new map by passing HTMLElement
-    let element: HTMLElement = document.getElementById('contact_map');
+    // let element: HTMLElement = document.getElementById('contact_map');
+    // console.log('element.id', element.id);
+    // let map: GoogleMap = this.googleMaps.create(element);
 
-    let map: GoogleMap = this.googleMaps.create(element);
+    let map:GoogleMap = new GoogleMap('contact_map');
 
     // listen to MAP_READY event
     // You must wait for this event to fire before adding something to the map or modifying it in anyway
